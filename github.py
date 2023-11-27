@@ -3,10 +3,10 @@ import sys
 
 
 # create_repo: creates a github repo when given a name
-def create_repo(repo):
+def create_repo(repo, src_path):
     if repo == "":
         sys.exit(1)
-    os.system(f'gh repo create {repo}')
+    os.system(f'gh repo create {repo} --public --source {src_path} --push')
 
 
 # delete_repo: deletes a github repo when given a repo
@@ -34,7 +34,8 @@ def main():
     action = input("Enter an action(create, delete, list, view): ")
     if action == "create":
         repo = input("Enter a repo: ")
-        create_repo(repo)
+        src_path = input("Enter source path: ")
+        create_repo(repo, src_path)
     elif action == "delete":
         repo = input("Enter a repo: ")
         delete_repo(repo)
