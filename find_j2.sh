@@ -1,2 +1,3 @@
 #!/bin/bash
-grep {{ w* }} */*
+dir=$1
+grep -r {{ w* }} $dir
